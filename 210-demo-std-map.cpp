@@ -21,36 +21,45 @@ int main() {
         // we can use std::get to access tuple elements
         cout << pair.first << " ["; 
         cout << get<0>(pair.second) << ", ";  // will print friendship level
-        cout << get<2>(pair.second) << ", "; // print species
-        cout << get<3>(pair.second) << ", " << endl; // print catchprase
+        cout << get<1>(pair.second) << ", "; // print species
+        cout << get<2>(pair.second) << "] " << endl; // print catchprase
     
-    }
-    
-    // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, vector<string>>::iterator it = villagerDetails.begin(); 
-                                               it != villagerDetails.end(); ++it) {
-        cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
-        }
-        cout << endl;
     }
 
-    // delete an element
-    villagerDetails.erase("Raymond");
+    // access the map using iterators
+    cout << "\nVillagers details (iterators):" << endl;
+    // update this to tuple
+    for (map<string, tuple<int, string, string>>::iterator it = villagerDetails.begin(); 
+        it != villagerDetails.end(); ++it) {
+
+            // use std::get to access the elements 
+            cout << it->first << " ["; // Print name
+            cout << get<0>(it->second) << ", "; // Print friendship
+            cout << get<1>(it->second) << ", "; // Print species
+            cout << get<2>(it->second) << "]" << endl; // Print catchphrase
+    }
+
+        
+     // delete an element
+    villagerDetails.erase("Snookie");
 
     // search for an element using .find() to avoid errors
-    string searchKey = "Audie";
+    string searchKey = "Joey";
     auto it = villagerDetails.find(searchKey);
+
+    
     if (it != villagerDetails.end()) {  // the iterator points to beyond the end of the map
                                        // if searchKey is not found
-        cout << "\nFound " << searchKey << "'s favorite colors: ";
-        for (auto color : it->second)  // range loop to traverse the value/vector
-            cout << color << " ";
-        cout << endl;
-    } else
+        cout << "\nFound " << searchKey << "'s details: ";
+
+        // Use std::get to print instead of loop
+        cout << "[" 
+             << get<0>(it->second) << ", "
+             << get<1>(it->second) << ", "
+             << get<2>(it->second) << "]" << endl;
+    } else {
         cout << endl << searchKey << " not found." << endl;
+    }
 
     // report size, clear, report size again to confirm map operations
     cout << "\nSize before clear: " << villagerDetails.size() << endl;
