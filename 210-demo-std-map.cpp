@@ -105,6 +105,7 @@ int main() {
                 
                 printVillagers(villagerDetails);
                 break;
+            }
 
             case 4: { // decrease friendship
 
@@ -151,16 +152,16 @@ int main() {
                 break;
             }
             default: { 
-                cout << "Invalid choice. Please enter a number 1-4." << endl;
+                cout << "Invalid choice. Please enter a number 1-6." << endl; // 6 here as well now
                 break;
             }
 
         }
     }
     
-    while (choice != 4);
+    while (choice != 6); // now we have 6 switch statements
     
     return 0;
 }
 
-//milestone 3
+//milestone 4 complete, done with assignment
