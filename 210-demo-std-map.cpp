@@ -64,7 +64,7 @@ int main() {
 
            case 2: { // Decrease Friendship
                 cout << "Enter villager name: ";
-                cin >> name;
+                getline(cin, name);
                 auto it = villagerDetails.find(name);
 
                 if (it != villagerDetails.end()) {
@@ -83,7 +83,7 @@ int main() {
             }
             case 3: { // Search for Villager
                 cout << "Enter villager name to search for: ";
-                cin >> name;
+                 getline(cin, name);
                 auto it = villagerDetails.find(name);
 
                 if (it != villagerDetails.end()) {
@@ -114,3 +114,5 @@ int main() {
     
     return 0;
 }
+
+//milestone 3
