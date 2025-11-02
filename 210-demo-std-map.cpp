@@ -32,10 +32,12 @@ int main() {
     do{
         //print menu:
         cout << "\nMenu:\n"
-             << "1. Increase Friendship\n"
-             << "2. Decrease Friendship\n"
-             << "3. Search for Villager\n"
-             << "4. Exit\n"
+             << "1. Add Villager\n"         
+             << "2. Delete Villager\n"      
+             << "3. Increase Friendship\n"
+             << "4. Decrease Friendship\n"
+             << "5. Search for Villager\n"
+             << "6. Exit\n"              
              << "Enter choice: ";
 
         // 2. Get user choice
@@ -45,42 +47,82 @@ int main() {
         cin.ignore(1000, '\n');
 
         switch (choice) {
-            case 1: { // increase friendship
-                cout << "Enter villager name: ";
-                getline(cin, name);
-                auto it = villagerDetails.find(name);
+            case 1: { // add villager
+                int friendship;
+                string species, catchphrase;
 
-                if (it != villagerDetails.end()) {
-                    get<0>(it->second)++;
-                    cout << name << "'s friendship increased!" << endl;
+                cout << "Villager name: ";
+                getline(cin, name); // Use getline for names with spaces
+
+                cout << "Friendship level: ";
+                cin >> friendship;
+
+                cin.ignore(1000, '\n'); 
+
+                cout << "Species: ";
+                getline(cin, species);
+
+                cout << "Catchphrase: ";
+                getline(cin, catchphrase);
+
+                // Add the new data to the map
+                villagerDetails[name] = {friendship, species, catchphrase};
+                
+                cout << name << " added." << endl;
+                printVillagers(villagerDetails);
+                break;
+            }   
+                // // increase friendship
+                // cout << "Enter villager name: ";
+                // getline(cin, name);
+                // auto it = villagerDetails.find(name);
+
+                // if (it != villagerDetails.end()) {
+                //     get<0>(it->second)++;
+                //     cout << name << "'s friendship increased!" << endl;
+                // } else {
+                //     cout << name << " not found." << endl;
+                // }
+                
+                // printVillagers(villagerDetails);
+                // break;
+
+           case 2: { // Delete villager now
+
+            cout << "Enter villager name to delete: ";
+                getline(cin, name); 
+
+                if (villagerDetails.erase(name) > 0) {
+                    // .erase() returns 1 if it found and deleted the item
+                    cout << name << " was deleted." << endl;
                 } else {
-                    cout << name << " not found." << endl;
+                    cout << "Sorry, " << name << " not found." << endl;
                 }
                 
                 printVillagers(villagerDetails);
                 break;
-
             }
 
-           case 2: { // Decrease Friendship
-                cout << "Enter villager name: ";
-                getline(cin, name);
-                auto it = villagerDetails.find(name);
 
-                if (it != villagerDetails.end()) {
-                    if (get<0>(it->second) > 0) {
-                        get<0>(it->second)--; 
-                        cout << name << "'s friendship decreased!" << endl;
-                    } else {
-                        cout << name << "'s friendship is already 0!" << endl;
-                    }
-                } else {
-                    cout << name << " not found." << endl;
-                }
+
+                // cout << "Enter villager name: ";
+                // getline(cin, name);
+                // auto it = villagerDetails.find(name);
+
+                // if (it != villagerDetails.end()) {
+                //     if (get<0>(it->second) > 0) {
+                //         get<0>(it->second)--; 
+                //         cout << name << "'s friendship decreased!" << endl;
+                //     } else {
+                //         cout << name << "'s friendship is already 0!" << endl;
+                //     }
+                // } else {
+                //     cout << name << " not found." << endl;
+                // }
                 
-                printVillagers(villagerDetails);
-                break;
-            }
+                // printVillagers(villagerDetails);
+                // break;
+            
             case 3: { // Search for Villager
                 cout << "Enter villager name to search for: ";
                  getline(cin, name);
