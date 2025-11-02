@@ -72,20 +72,6 @@ int main() {
                 printVillagers(villagerDetails);
                 break;
             }   
-                // // increase friendship
-                // cout << "Enter villager name: ";
-                // getline(cin, name);
-                // auto it = villagerDetails.find(name);
-
-                // if (it != villagerDetails.end()) {
-                //     get<0>(it->second)++;
-                //     cout << name << "'s friendship increased!" << endl;
-                // } else {
-                //     cout << name << " not found." << endl;
-                // }
-                
-                // printVillagers(villagerDetails);
-                // break;
 
            case 2: { // Delete villager now
 
@@ -104,26 +90,46 @@ int main() {
             }
 
 
-
-                // cout << "Enter villager name: ";
-                // getline(cin, name);
-                // auto it = villagerDetails.find(name);
-
-                // if (it != villagerDetails.end()) {
-                //     if (get<0>(it->second) > 0) {
-                //         get<0>(it->second)--; 
-                //         cout << name << "'s friendship decreased!" << endl;
-                //     } else {
-                //         cout << name << "'s friendship is already 0!" << endl;
-                //     }
-                // } else {
-                //     cout << name << " not found." << endl;
-                // }
-                
-                // printVillagers(villagerDetails);
-                // break;
             
-            case 3: { // Search for Villager
+            case 3: { // increase friendship
+                cout << "Enter villager name: ";
+                getline(cin, name);
+                auto it = villagerDetails.find(name);
+
+                if (it != villagerDetails.end()) {
+                    get<0>(it->second)++;
+                    cout << name << "'s friendship increased!" << endl;
+                } else {
+                    cout << name << " not found." << endl;
+                }
+                
+                printVillagers(villagerDetails);
+                break;
+
+            case 4: { // decrease friendship
+
+                cout << "Enter villager name: ";
+                getline(cin, name);
+                auto it = villagerDetails.find(name);
+
+                if (it != villagerDetails.end()) {
+                    if (get<0>(it->second) > 0) {
+                        get<0>(it->second)--; 
+                        cout << name << "'s friendship decreased!" << endl;
+                    } else {
+                        cout << name << "'s friendship is already 0!" << endl;
+                    }
+                } else {
+                    cout << name << " not found." << endl;
+                }
+                
+                printVillagers(villagerDetails);
+                break;
+            
+            }
+
+            
+            case 5: { // Search for Villager
                 cout << "Enter villager name to search for: ";
                  getline(cin, name);
                 auto it = villagerDetails.find(name);
@@ -140,7 +146,7 @@ int main() {
                 printVillagers(villagerDetails);
                 break;
             }
-            case 4: { // Exit
+            case 6: { // Exit
                 cout << "Goodbye!" << endl;
                 break;
             }
