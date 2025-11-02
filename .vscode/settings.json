@@ -1,5 +1,14 @@
 {
     "files.associations": {
-        "map": "cpp"
+        "map": "cpp",
+        "__hash_table": "cpp",
+        "__split_buffer": "cpp",
+        "__tree": "cpp",
+        "deque": "cpp",
+        "ios": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp"
     }
 }
